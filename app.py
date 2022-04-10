@@ -63,7 +63,7 @@ def prediction():
     #Image file path for sample image images  image
     # test_image_file_path = request.form['image']
     #lire l'image
-    test_image_file_path = "sample_test_images/image.png"
+    test_image_file_path = "sample_test_images/images.jpeg"
     #loading the image 
     img = plt.imread(test_image_file_path)
     #initializing the detector 
