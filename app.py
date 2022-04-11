@@ -12,8 +12,8 @@ from keras.models import load_model
 from PIL import Image
 #for tensor based operation
 import keras
-from keras.utils import normalize
-# from tensorflow.keras.utils import normalize
+# from keras.utils import normalize
+from tensorflow.keras.utils import normalize
 # from tensorflow.keras.utils import  normalize
 import tensorflow
 # load a model => charger le model model.h5
@@ -37,6 +37,7 @@ def save():
     # tableauPixels =np.array(file)
     # nouvellePhoto =Image.fromarray(tableauPixels)
     # nouvellePhoto.save("sample_test_images/image.png", "PNG")
+    
     return "Saved Image"
 
 
@@ -47,9 +48,9 @@ def prediction():
     # test_image_file_path = request.form['image']
     #lire l'image
 
-    test_image_file_path = "sample_test_images/images.jpeg"
+    # test_image_file_path = "sample_test_images/images.jpeg"
 
-#     test_image_file_path = "images/image.jpeg"
+    test_image_file_path = "images/image.jpeg"
 # >>>>>>> 1d19a2ebccdd050c0ace9345aaa90a76e5974e2e
     #loading the image 
     img = plt.imread(test_image_file_path)
@@ -100,17 +101,20 @@ def saveAndPredict():
     tableauPixels =np.array(photo)
     # on fait une copie du tableau initial pour garder la matrice originale :
     M=np.copy(tableauPixels)
+    print("table pix images")
+    print(M)
     #exportation en png : très rapide et ne plante pas la console
     # pour exporter le tableau de Pixels en image
     nouvellePhoto =Image.fromarray(M)
     nouvellePhoto.save("images/image.jpeg", "JPEG")
     pred = prediction()
-    return render_template('predictionResultat.html', data=pred)
+    file_img = os.path.join(app.config['UPLOAD_FOLDER'], 'photo.jpg')
+    return render_template('predictionResultat.html', data=pred,img=file_img )
 
 
-@app.route('/predict', methods=['POST'])
-def home():
-    return render_template('predictionResultat.html', data=pred)
+# @app.route('/predict', methods=['POST'])
+# def home():
+#     return render_template('predictionResultat.html', data=pred)
 
 
 if __name__ == "__main__":
