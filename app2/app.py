@@ -11,10 +11,11 @@ from mtcnn.mtcnn import MTCNN
 from keras.models import load_model
 from PIL import Image
 #for tensor based operation
-import keras
 # from keras.utils import normalize
-from tensorflow.keras.utils import normalize
 # from tensorflow.keras.utils import  normalize
+from keras.utils import normalize
+# from tensorflow.keras.utils import  normalize
+from keras.utils.np_utils import normalize
 import tensorflow
 # load a model => charger le model model.h5
 model = load_model("model.h5")
